@@ -18,7 +18,7 @@ adjusted_cached_count_mapping = {k: np.log1p(v) for k, v in id_cached_count_mapp
 
 st.title("AO3 Fandom Cross-over Networks!")
 
-st.header("Welcome to the AO3 cross-over network.")
+# st.header("Welcome to the AO3 cross-over network.")
 
 st.subheader("Step 1: Choose your fandom")
 default_fandom = "Haikyuu!!"
