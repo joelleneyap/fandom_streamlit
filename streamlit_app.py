@@ -18,8 +18,6 @@ adjusted_cached_count_mapping = {k: np.log1p(v) for k, v in id_cached_count_mapp
 
 st.title("AO3 Fandom Cross-over Networks!")
 
-# st.header("Welcome to the AO3 cross-over network.")
-
 st.subheader("Step 1: Choose your fandom")
 default_fandom = "Haikyuu!!"
 st.write("The network uses ", default_fandom, " as the default. It'll change as you search for your fandom and select it! There's lots of overlapping names for fandoms on AO3, so choose the one you're most interested in by hitting the checkbox in the leftmost column of the table.")
@@ -62,15 +60,21 @@ event = st.dataframe(
 
 if len(event.selection['rows']) > 0:
     ego_fandom = filtered_fandoms.iloc[event.selection['rows'][0]]['name']
+    st.write("Great! You've chosen: ", ego_fandom)
 else:
     ego_fandom = default_fandom
-st.write("Great! You've chosen: ", ego_fandom)
+    st.write("Network defaults to", ego_fandom)
 
 # SET RADIUS
 st.subheader("Step 2: Set the radius")
-st.write("The radius of the ego graph controls the number of neighbor nodes that are drawn. The graph will include all neighbors of distance <= radius.")
-st.link_button("Ego graph documentation", "https://networkx.org/documentation/stable/reference/generated/networkx.generators.ego.ego_graph.html")
-st.write("Radius is limited from 2 to 5 for now. 1 would only show the single central node. The bigger the number, the more nodes, and the longer it takes to load!")
+col1, col2, col3 = st.columns(2)
+
+with col1:
+    st.header("A cat")
+    st.write("The graph will include all neighbors of distance <= radius. Radius is limited from 2 to 5 for now. 1 would only show the single central node. The bigger the number, the more nodes, and the longer it takes to load!")
+with col2:
+    st.link_button("Ego graph documentation", "https://networkx.org/documentation/stable/reference/generated/networkx.generators.ego.ego_graph.html")
+
 radius = st.select_slider("Select radius",
                           options=[2, 3, 4, 5],
                           )
