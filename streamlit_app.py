@@ -63,14 +63,13 @@ if len(event.selection['rows']) > 0:
     st.write("Great! You've chosen: ", ego_fandom)
 else:
     ego_fandom = default_fandom
-    st.write("Network defaults to", ego_fandom)
+    st.write("No selection made. Network defaults to", ego_fandom)
 
 # SET RADIUS
 st.subheader("Step 2: Set the radius")
-col1, col2, col3 = st.columns(2)
+col1, col2 = st.columns([3, 1])
 
 with col1:
-    st.header("A cat")
     st.write("The graph will include all neighbors of distance <= radius. Radius is limited from 2 to 5 for now. 1 would only show the single central node. The bigger the number, the more nodes, and the longer it takes to load!")
 with col2:
     st.link_button("Ego graph documentation", "https://networkx.org/documentation/stable/reference/generated/networkx.generators.ego.ego_graph.html")
