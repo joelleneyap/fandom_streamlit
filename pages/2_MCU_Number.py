@@ -57,9 +57,9 @@ nx.set_node_attributes(G, name='adjusted_node_size', values=adjusted_node_size)
 # most well-connected
 st.header("The Challenge:")
 central_node = max(nx.eigenvector_centrality(G), key=nx.eigenvector_centrality(G).get)
-st.write("The fandom included in the most number of crossovers in 2021 is the ", central_node)
-st.write("The MCU Number is the smallest number of links a given fandom is away from the MCU, if a link represents fics with a crossover between 2 fandoms. Most fandoms are connected to the MCU somehow — the average number of links away from the MCU is 1.46.")
-st.write("Your challenge is to find a fandom with the highest MCU Number! Or one that has no crossovers with the MCU at all!")
+st.write(f"The fandom included in the most number of crossovers in 2021 is the **{central_node}**")
+st.write("The MCU Number is the **smallest number of links a given fandom is away from the MCU**, if a link represents fics with a crossover between 2 fandoms. Most fandoms are connected to the MCU somehow — the average number of links away from the MCU is 1.46.")
+st.write("Your challenge is to find a fandom with the **highest MCU Number**! Or one that has no crossovers with the MCU at all!")
 
 
 
@@ -103,10 +103,10 @@ event = st.dataframe(
 
 if len(event.selection['rows']) > 0:
     test_node = filtered_fandoms.iloc[event.selection['rows'][0]]['name']
-    st.write("You've chosen: ", test_node)
+    st.write(f"You've chosen: **{test_node}**")
 else:
     test_node = default_fandom
-    st.write("No selection made. Network defaults to", test_node)
+    st.write(f"No selection made. Network defaults to **{test_node}**")
 
 
 
@@ -115,7 +115,7 @@ else:
 try:
     # Attempt to find the shortest path length between the two nodes
     path_length = nx.shortest_path_length(G, source=test_node, target=central_node)
-    st.write(f"The shortest path between '{test_node}' and '{central_node}' has {path_length} edge(s).")
+    st.write(f"The shortest path between '{test_node}' and '{central_node}' has **{path_length}** edge(s).")
 
     ego_graph = G.subgraph(nx.shortest_path(G, test_node, central_node))
 
