@@ -79,7 +79,7 @@ radius = st.select_slider("Select radius",
                           )
 
 
-st.subheader("Ego network: " + ego_fandom + " with radius " + str(radius))
+st.subheader("Crossover network: " + ego_fandom + " with radius " + str(radius))
 st.write("Hover over each node to learn more. Hover over an edge to find the number of crossovers between the two fandoms! Feel free to drag and zoom too.")
 edgelist_df_small = edgelist_df_small.rename(columns={"count": "title"})
 G_ego = nx.from_pandas_edgelist(edgelist_df_small, source='name_1', target='name_2', edge_attr='title')
@@ -123,7 +123,7 @@ nx.set_node_attributes(ego_graph, name='title', values=id_title_mapping)
 # HOVER: EDGE WEIGHT: done by switching weight name to title
 # COLOR: set within networkx before converting to pyvis net
 alpha_value = 0.9
-color_attribute_list_normed = Normalize(vmin=min(color_attribute_list), vmax=max(color_attribute_list))
+color_attribute_list_normed = Normalize(vmin=3, vmax=max(color_attribute_list))
 colormap = pyplot.get_cmap('Reds')
 colors = [to_rgba(colormap(color_attribute_list_normed(value)), alpha = alpha_value) for value in color_attribute_list]
 rgba_colors = [f'rgba({int(r*255)}, {int(g*255)}, {int(b*255)}, {alpha_value})' for r, g, b, _ in colors]
@@ -136,8 +136,8 @@ nx.set_node_attributes(ego_graph, name='borderWidth', values=2)
 # Initialize Pyvis Network
 net = Network(notebook = True,
               width = '100%',height = '1000px',
-              bgcolor ='white',font_color = 'black',
-              #filter_menu=True, 
+              bgcolor ='#ebe9e1',font_color = 'black',
+              neighborhood_highlight=True,
               cdn_resources='remote')
 #ebe9e1
 net.from_nx(ego_graph)
