@@ -34,5 +34,6 @@ social_media_links = [
   "https://twitter.com/hug_starved",
   "https://www.linkedin.com/in/joellene-yap/"
 ]
-social_media_icons = SocialMediaIcons(social_media_links)
+colors = ["#d6536d", "#d6536d", "#d6536d"]
+social_media_icons = SocialMediaIcons(social_media_links, colors)
 social_media_icons.render()
