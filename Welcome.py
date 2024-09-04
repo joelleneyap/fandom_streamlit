@@ -8,7 +8,7 @@ st.set_page_config(
 
 st.title("Welcome to the AO3xNetworkX project! 👋")
 
-st.sidebar.success()
+# st.sidebar.success()
 
 st.write(
     """
