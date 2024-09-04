@@ -116,7 +116,11 @@ try:
     # Attempt to find the shortest path length between the two nodes
     path_length = nx.shortest_path_length(G, source=test_node, target=central_node)
     st.write(f"The shortest path between '{test_node}' and '{central_node}' has {path_length} edge(s).")
-    st.info(f"The MCU number of {test_node} is **{path_length}**.", icon="🤯")
+    if path_length == 8:
+        st.write("Congrats! 8 is the maximum MCU Number in this dataset! You have found 1 of 6 fandoms.")
+        st.balloons()
+    else:
+        st.info(f"The MCU number of {test_node} is **{path_length}**.", icon="🤯")
 
     ego_graph = G.subgraph(nx.shortest_path(G, test_node, central_node))
 
@@ -139,7 +143,7 @@ try:
     # HOVER: EDGE WEIGHT: done by switching weight name to title
     # COLOR: set within networkx before converting to pyvis net
     alpha_value = 0.9
-    color_attribute_list_normed = Normalize(vmin=min(color_attribute_list), vmax=max(color_attribute_list))
+    color_attribute_list_normed = Normalize(vmin=3, vmax=max(color_attribute_list))
     colormap = pyplot.get_cmap('Reds')
     colors = [to_rgba(colormap(color_attribute_list_normed(value)), alpha = alpha_value) for value in color_attribute_list]
     rgba_colors = [f'rgba({int(r*255)}, {int(g*255)}, {int(b*255)}, {alpha_value})' for r, g, b, _ in colors]
@@ -171,5 +175,5 @@ try:
 
 except nx.NetworkXNoPath:
     # Handle the case where no path exists
-    st.write(f"Nice one! No path exists between '{test_node}' and '{central_node}'.")
+    st.write(f"Nice one! No path exists between '{test_node}' and '{central_node}'. This is 1 of 806 fandoms with MCU Number 0.")
     st.balloons()

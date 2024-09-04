@@ -3,3 +3,4 @@ networkx
 pyvis
 matplotlib
 st_social_media_links
+rapidfuzz

@@ -6,6 +6,7 @@ from pyvis.network import Network
 import streamlit.components.v1 as components
 from matplotlib import pyplot
 from matplotlib.colors import Normalize, to_rgba
+import rapidfuzz
 
 # narrowed down: only edges with >100 count
 edgelist_df_small = pd.read_csv("edgelist_df_small_fandoms.csv")
@@ -29,6 +30,7 @@ if user_search:
 else:
     query = default_fandom
 
+#semantic search, edit distance, if fast: cache the common searches.... D:
 results_1 = edgelist_df_small[edgelist_df_small['name_1'].str.contains(query, case=False, na=False)][['count', 'integer_1', 'name_1']].rename(columns={"integer_1": "id", "name_1": "name"})
 results_2 = edgelist_df_small[edgelist_df_small['name_2'].str.contains(query, case=False, na=False)][['count', 'integer_2', 'name_2']].rename(columns={"integer_2": "id", "name_2": "name"})
 filtered_fandoms = pd.concat([results_1, results_2], axis=0)
