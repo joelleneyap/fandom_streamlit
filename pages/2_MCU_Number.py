@@ -57,10 +57,9 @@ nx.set_node_attributes(G, name='adjusted_node_size', values=adjusted_node_size)
 # most well-connected
 st.header("The Challenge:")
 central_node = max(nx.eigenvector_centrality(G), key=nx.eigenvector_centrality(G).get)
-st.write(f"The fandom included in the most number of crossovers in 2021 is the **{central_node}*.")
+st.write(f"The fandom included in the most number of crossovers in 2021 is the **{central_node}**.")
 st.write("The MCU Number is the **smallest number of links a given fandom is away from the MCU**, if a link represents fics with a crossover between 2 fandoms. Most fandoms are connected to the MCU somehow — the average number of links away from the MCU is 1.46.")
 st.write("Your challenge is to find a fandom with the **highest MCU Number**! Or one that has no crossovers with the MCU at all!")
-
 
 
 default_fandom = "The Lord of the Rings - All Media Types"
