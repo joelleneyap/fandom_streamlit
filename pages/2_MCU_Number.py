@@ -153,7 +153,7 @@ try:
     # Initialize Pyvis Network
     net = Network(notebook = True,
                 width = '100%',height = '500px',
-                bgcolor ='white',font_color = 'black',
+                bgcolor ='#ebe9e1',font_color = 'black',
                 #filter_menu=True, 
                 cdn_resources='remote')
     net.from_nx(ego_graph)
