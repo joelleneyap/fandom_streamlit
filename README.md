@@ -1,19 +1,3 @@
-# 🎈 Blank app template
+# Live [here]([url](https://joelleneyap-fandom-streamlit-welcome-fli9ev.streamlit.app/MCU_Number))
 
-A simple Streamlit app template for you to modify!
-
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
-
-### How to run it on your own machine
-
-1. Install the requirements
-
-   ```
-   $ pip install -r requirements.txt
-   ```
-
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+Blogpost [here]([url](https://joelleneyap.github.io/quartz/DSxAO3/AO3xNetworkX-project!))!
